@@ -108,9 +108,15 @@
 
         <aside class="sidebar" id="info-sidebar">
             <button class="close-sidebar-btn" id="close-sidebar-btn" title="Close Sidebar">&times;</button>
-            <h2>Video Info</h2>
-            <p>Details about the video file, frames, chunks, etc., will appear here.</p>
-        </aside>
+           <h2>Video Info</h2>
+           <p id="sidebar-placeholder">Load a video to see information.</p>
+
+           <div id="frame-info-area" class="frame-info-area" style="display: none;"> <h4>Frame Information</h4>
+                <p>Total Frames: <span id="total-frames">N/A</span></p>
+                <p>Current Frame: <span id="current-frame">N/A</span></p>
+                <p>Frame Type: <span id="current-frame-type">N/A</span> <small>(Analysis needed)</small></p>
+                </div>
+           </aside>
 
         <footer class="app-footer">
             <p>Status: Ready</p>

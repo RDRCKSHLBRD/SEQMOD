@@ -25,88 +25,20 @@ html, body { height: 100%; width: 100%; overflow: hidden; font-family: sans-seri
 .tool-item:hover { background-color: #4d5360; color: #abb2bf; }
 
 /* Video Area Styling */
-.video-area {
-  padding: 0; /* Remove parent padding */
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  border-left: 1px solid #3a3f4b;
-  transition: width 0.3s ease-in-out, min-width 0.3s ease-in-out, padding 0.3s ease-in-out, border 0.3s ease-in-out, flex-grow 0.3s ease-in-out;
-}
+.video-area { padding: 0; display: flex; flex-direction: column; overflow: hidden; border-left: 1px solid #3a3f4b; transition: width 0.3s ease-in-out, min-width 0.3s ease-in-out, padding 0.3s ease-in-out, border 0.3s ease-in-out, flex-grow 0.3s ease-in-out; }
 
-/* UPDATED: Time Info Bar Styling */
-.time-info-bar {
-    /* height: auto; Allow height to be determined by content */
-    flex-shrink: 0;
-    background-color: #21252b;
-    border-bottom: 1px solid #3a3f4b;
-    padding: 5px 15px; /* Padding inside the bar */
-    display: flex;
-    flex-direction: column; /* Stack text row and seek bar */
-}
-.time-text-info { /* Style for the text row */
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin-bottom: 5px; /* Space between text and seek bar */
-    font-size: 0.85em;
-    color: #abb2bf;
-}
+/* Time Info Bar Styling */
+.time-info-bar { flex-shrink: 0; background-color: #21252b; border-bottom: 1px solid #3a3f4b; padding: 5px 15px; display: flex; flex-direction: column; }
+.time-text-info { display: flex; align-items: center; justify-content: flex-start; margin-bottom: 5px; font-size: 0.85em; color: #abb2bf; }
 .time-text-info > span { margin-right: 5px; }
 .time-text-info .divider { font-size: 1em; margin: 0 10px; }
-#current-time, #total-duration, #in-point-time, #out-point-time, #loop-length {
-    display: inline-block;
-    min-width: 55px; /* Width for M:SS.ss */
-    text-align: right;
-    font-family: monospace;
-}
+#current-time, #total-duration, #in-point-time, #out-point-time, #loop-length { display: inline-block; min-width: 55px; text-align: right; font-family: monospace; }
+.seek-bar { width: 100%; height: 8px; cursor: pointer; margin: 0; appearance: none; background: #4d5360; border-radius: 4px; outline: none; }
+.seek-bar::-webkit-slider-thumb { appearance: none; width: 14px; height: 14px; background: #abb2bf; border-radius: 50%; cursor: pointer; }
+.seek-bar::-moz-range-thumb { width: 14px; height: 14px; background: #abb2bf; border-radius: 50%; cursor: pointer; border: none; }
 
-/* NEW: Seek Bar Styling */
-.seek-bar {
-    width: 100%; /* Full width */
-    height: 8px; /* Thickness of the bar */
-    cursor: pointer;
-    margin: 0; /* Remove default margins */
-    /* Basic appearance reset (optional, can add more styling later) */
-    appearance: none;
-    background: #4d5360; /* Track color */
-    border-radius: 4px;
-    outline: none;
-}
-/* Styling the thumb (handle) - Webkit browsers */
-.seek-bar::-webkit-slider-thumb {
-    appearance: none;
-    width: 14px;
-    height: 14px;
-    background: #abb2bf; /* Thumb color */
-    border-radius: 50%;
-    cursor: pointer;
-}
-/* Styling the thumb (handle) - Firefox */
-.seek-bar::-moz-range-thumb {
-    width: 14px;
-    height: 14px;
-    background: #abb2bf;
-    border-radius: 50%;
-    cursor: pointer;
-    border: none;
-}
-
-
-#video-player {
-  width: 100%;
-  background-color: #000;
-  flex-grow: 1;
-  object-fit: contain;
-  border: none;
-  min-height: 100px;
-  transition: transform 0.3s ease-in-out;
-  display: block;
-  margin-top: 0;
-  /* Add padding below video if needed, or let container handle it */
-  padding: 0 15px 15px 15px; /* Add padding back around video */
-}
-
+/* Video Player Styling */
+#video-player { width: 100%; background-color: #000; flex-grow: 1; object-fit: contain; border: none; min-height: 100px; transition: transform 0.3s ease-in-out; display: block; margin-top: 0; padding: 0 15px 15px 15px; }
 /* Video Rotation Classes */
 #video-player.rotated-90 { transform: rotate(90deg); }
 #video-player.rotated-180 { transform: rotate(180deg); }
@@ -127,12 +59,38 @@ html, body { height: 100%; width: 100%; overflow: hidden; font-family: sans-seri
 /* Sidebar Styling */
 .sidebar { position: fixed; top: 0; right: -350px; width: 350px; height: 100%; background-color: #21252b; border-left: 1px solid #3a3f4b; padding: 15px; transition: right 0.3s ease-in-out; overflow-y: auto; z-index: 10; box-shadow: none; }
 .sidebar.open { right: 0; }
-.sidebar h2 { color: #61afef; margin-bottom: 15px; padding-top: 25px; }
+.sidebar h2 { color: #61afef; margin-bottom: 10px; padding-top: 25px; border-bottom: 1px solid #3a3f4b; padding-bottom: 5px;} /* Added border below H2 */
 .close-sidebar-btn { position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 1.8em; color: #abb2bf; cursor: pointer; padding: 0 5px; line-height: 1; }
 .close-sidebar-btn:hover { color: #ffffff; }
+/* Ensure sidebar placeholder is hidden when content exists */
+#sidebar-placeholder { display: block; /* Show by default */ }
+.sidebar.has-content #sidebar-placeholder { display: none; /* Hide when content added */ }
+
+/* Metadata display styling */
 .metadata-content { margin-top: 15px; font-size: 0.9em; line-height: 1.5; word-break: break-all; }
 .metadata-content p { margin-bottom: 5px; }
 .metadata-content hr { border: none; border-top: 1px solid #3a3f4b; margin: 10px 0; }
+
+/* Frame Info Area Styling */
+.frame-info-area {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #0E5960; /* User specified border */
+    border-radius: 3px;
+    color: #F9F7F7; /* User specified text color */
+    font-size: 0.9em;
+    line-height: 1.6;
+    display: none; /* Keep hidden initially */
+}
+.frame-info-area h4 {
+    margin-bottom: 8px;
+    color: #61afef;
+    border-bottom: 1px solid #3a3f4b;
+    padding-bottom: 4px;
+}
+.frame-info-area p { margin-bottom: 3px; }
+.frame-info-area span { display: inline-block; min-width: 60px; font-family: monospace; margin-left: 5px; }
+.frame-info-area small { color: #8b92a1; font-size: 0.9em; }
 
 /* Footer Styling */
 .app-footer { height: 25px; padding: 0 15px; background-color: #21252b; border-top: 1px solid #3a3f4b; flex-shrink: 0; display: flex; align-items: center; font-size: 0.8em; color: #8b92a1; }
