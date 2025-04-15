@@ -8,10 +8,10 @@
 html, body {
   height: 100%;
   width: 100%;
-  overflow: hidden;
+  overflow: hidden; /* Prevent scrollbars on body */
   font-family: sans-serif;
-  background-color: #282c34;
-  color: #abb2bf;
+  background-color: #282c34; /* Dark background */
+  color: #abb2bf; /* Light text */
 }
 
 /* App Container */
@@ -27,12 +27,12 @@ html, body {
   justify-content: space-between;
   align-items: center;
   padding: 5px 15px;
-  background-color: #21252b;
-  border-bottom: 1px solid #3a3f4b;
-  flex-shrink: 0;
-  height: 50px;
-  white-space: nowrap;
-  overflow-x: auto;
+  background-color: #21252b; /* Slightly darker header */
+  border-bottom: 1px solid #3a3f4b; /* Slightly lighter border for flatness */
+  flex-shrink: 0; /* Prevent header from shrinking */
+  height: 50px; /* Fixed header height */
+  white-space: nowrap; /* Prevent wrapping in header */
+  overflow-x: auto; /* Add scroll if needed, though ideally it fits */
 }
 
 .header-left { /* Wrap SVG in a div if more elements are added here */
@@ -60,21 +60,23 @@ html, body {
     margin-left: 15px; /* Add space before right content */
 }
 
-
+/* --- USER CHANGE INCORPORATED --- */
 .header-center button,
 .header-right button {
   padding: 5px 10px;
   margin-left: 6px;
   background-color: #3a3f4b;
-  color: #abb2bf;
+  color: #F9F7F7;  /* User specified color */
   border: 1px solid #4d5360;
   border-radius: 3px;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  font-size: 0.9em;
+  font-size: 0.7em; /* User specified font size */
 }
+/* --- END USER CHANGE --- */
+
 .header-center button small {
-  font-size: 0.7em;
+  font-size: 0.7em; /* Keep this relative or adjust if needed */
   vertical-align: middle;
 }
 
@@ -86,20 +88,21 @@ html, body {
 .divider {
   margin: 0 8px;
   color: #4d5360;
-  font-size: 1.1em;
+  font-size: 1.1em; /* Make divider slightly larger than new button font */
   cursor: default;
+  line-height: 1;
 }
 
 /* Main Content Area Styling */
 .app-main {
   display: flex;
   flex-grow: 1;
-  overflow: hidden; /* Important */
+  overflow: hidden;
 }
 
 /* Tool Grid Styling */
 .tool-grid {
-  min-width: 150px; /* Keep minimum width */
+  min-width: 150px;
   padding: 10px;
   border-right: 1px solid #3a3f4b;
   display: grid;
@@ -108,7 +111,6 @@ html, body {
   gap: 4px;
   overflow-y: auto;
   background-color: #2c313a;
-  /* Add transition for smooth width change */
   transition: width 0.3s ease-in-out, min-width 0.3s ease-in-out, flex-grow 0.3s ease-in-out;
 }
 
@@ -136,9 +138,8 @@ html, body {
   padding: 15px;
   display: flex;
   flex-direction: column;
-  overflow: hidden; /* Important */
-  border-left: 1px solid #3a3f4b; /* Add border matching tool-grid */
-  /* Add transition for smooth collapse/expand */
+  overflow: hidden;
+  border-left: 1px solid #3a3f4b;
   transition: width 0.3s ease-in-out, min-width 0.3s ease-in-out, padding 0.3s ease-in-out, border 0.3s ease-in-out, flex-grow 0.3s ease-in-out;
 }
 
@@ -154,14 +155,27 @@ html, body {
   flex-grow: 1;
   object-fit: contain;
   border: none;
-  min-height: 100px; /* Prevent it becoming too small during transition */
+  min-height: 100px;
+  /* Add transition for transform */
+  transition: transform 0.3s ease-in-out;
 }
 
-/* NEW: Video Area Toggle Button Styling */
+/* Video Rotation Classes */
+#video-player.rotated-90 {
+  transform: rotate(90deg);
+}
+#video-player.rotated-180 {
+  transform: rotate(180deg);
+}
+#video-player.rotated-270 {
+  transform: rotate(270deg);
+}
+
+/* Video Area Toggle Button Styling */
 .video-area-toggle {
-    width: 25px; /* Width of the toggle button */
-    flex-shrink: 0; /* Prevent button from shrinking */
-    background-color: #2c313a; /* Match tool grid background */
+    width: 25px;
+    flex-shrink: 0;
+    background-color: #2c313a;
     border: none;
     border-left: 1px solid #3a3f4b;
     border-right: 1px solid #3a3f4b;
@@ -179,47 +193,16 @@ html, body {
 .video-area-toggle:hover {
     background-color: #3a3f4b;
 }
-/* Set the icon based on layout state */
-.app-main.layout-expanded .video-area-toggle::before {
-    content: '>'; /* Point right to collapse */
-}
-.app-main.layout-collapsed .video-area-toggle::before {
-    content: '<'; /* Point left to expand */
-}
+.app-main.layout-expanded .video-area-toggle::before { content: '>'; }
+.app-main.layout-collapsed .video-area-toggle::before { content: '<'; }
 
+/* Layout State Styling */
+.app-main.layout-expanded .tool-grid { width: 18%; flex-shrink: 0; flex-grow: 0; }
+.app-main.layout-expanded .video-area { flex-grow: 1; width: auto; min-width: 200px; padding: 15px; border-left: 1px solid #3a3f4b; }
+.app-main.layout-collapsed .tool-grid { flex-grow: 1; width: auto; }
+.app-main.layout-collapsed .video-area { flex-grow: 0; width: 0; min-width: 0; padding: 0; overflow: hidden; border-left: none; }
 
-/* --- Layout State Styling --- */
-
-/* Default Expanded State */
-.app-main.layout-expanded .tool-grid {
-  width: 18%;
-  flex-shrink: 0; /* Prevent shrinking */
-  flex-grow: 0;
-}
-.app-main.layout-expanded .video-area {
-  flex-grow: 1; /* Takes remaining space */
-  width: auto; /* Allow it to grow */
-  min-width: 200px; /* Minimum sensible width */
-  padding: 15px; /* Restore padding */
-  border-left: 1px solid #3a3f4b; /* Restore border */
-}
-
-/* Collapsed State */
-.app-main.layout-collapsed .tool-grid {
-  flex-grow: 1; /* Expand to fill space */
-  width: auto; /* Let flexbox determine width */
-}
-.app-main.layout-collapsed .video-area {
-  flex-grow: 0;
-  width: 0;      /* Collapse width */
-  min-width: 0;  /* Allow collapsing fully */
-  padding: 0;    /* Remove padding */
-  overflow: hidden; /* Hide content */
-  border-left: none; /* Remove border */
-}
-
-
-/* Sidebar Styling (Remains the same) */
+/* Sidebar Styling */
 .sidebar {
   position: fixed;
   top: 0;
@@ -234,36 +217,18 @@ html, body {
   z-index: 10;
   box-shadow: none;
 }
+.sidebar.open { right: 0; }
+.sidebar h2 { color: #61afef; margin-bottom: 15px; padding-top: 25px; }
+.close-sidebar-btn { position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 1.8em; color: #abb2bf; cursor: pointer; padding: 0 5px; line-height: 1; }
+.close-sidebar-btn:hover { color: #ffffff; }
 
-.sidebar.open {
-  right: 0;
-}
-
-.sidebar h2 {
-  color: #61afef;
-  margin-bottom: 15px;
-  padding-top: 25px;
-}
-
-.close-sidebar-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  font-size: 1.8em;
-  color: #abb2bf;
-  cursor: pointer;
-  padding: 0 5px;
-  line-height: 1;
-}
-
-.close-sidebar-btn:hover {
-  color: #ffffff;
-}
+/* Metadata display styling */
+.metadata-content { margin-top: 15px; font-size: 0.9em; line-height: 1.5; word-break: break-all; }
+.metadata-content p { margin-bottom: 5px; }
+.metadata-content hr { border: none; border-top: 1px solid #3a3f4b; margin: 10px 0; }
 
 
-/* Footer Styling (Remains the same) */
+/* Footer Styling */
 .app-footer {
   height: 25px;
   padding: 0 15px;

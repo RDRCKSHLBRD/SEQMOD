@@ -14,31 +14,35 @@
           <div class="header-left">
             <img src="./assets/SEQmod-1.svg" alt="SEQMOD Logo" class="logoTagSvg">
         </div>
-            <nav class="header-center">
-              <button id="load-btn" title="Load Video File">Load</button>
-              <button id="eject-btn" title="Eject Video (Placeholder)">Eject</button>
+        <nav class="header-center">
+            <button id="load-btn" title="Load Video File">Load</button>
+            <button id="eject-btn" title="Eject Video (Placeholder)">Eject</button>
 
-              <span class="divider">|</span>
+            <span class="divider">|</span>
 
-              <button id="skip-bwd-30-btn" title="Skip Back 30s">-30s</button>
-              <button id="skip-bwd-10-btn" title="Skip Back 10s">-10s</button>
+            <button id="skip-bwd-30-btn" title="Skip Back 30s">-30s</button>
+            <button id="skip-bwd-10-btn" title="Skip Back 10s">-10s</button>
 
-              <button id="rewind-btn" title="Rewind (Placeholder)">&lt;&lt;</button> <button id="key-bkwrd-btn" title="Previous Keyframe/Step Back (Placeholder)">[&lt;]</button> <button id="stop-btn" title="Stop">■</button>
-              <button id="play-btn" title="Play">▶</button>
-              <button id="pause-btn" title="Pause">❚❚</button>
-              <button id="key-fwd-btn" title="Next Keyframe/Step Fwd (Placeholder)">[&gt;]</button> <button id="fastfwd-btn" title="Fast Forward (Placeholder)">&gt;&gt;</button> <button id="skip-fwd-10-btn" title="Skip Forward 10s">+10s</button>
-              <button id="skip-fwd-30-btn" title="Skip Forward 30s">+30s</button>
+            <button id="rewind-btn" title="Rewind (Placeholder)">&lt;&lt;</button> <button id="key-bkwrd-btn" title="Previous Keyframe/Step Back (Placeholder)">[&lt;]</button> <button id="stop-btn" title="Stop">■</button>
+            <button id="play-btn" title="Play">▶</button>
+            <button id="pause-btn" title="Pause">❚❚</button>
+            <button id="key-fwd-btn" title="Next Keyframe/Step Fwd (Placeholder)">[&gt;]</button> <button id="fastfwd-btn" title="Fast Forward (Placeholder)">&gt;&gt;</button> <button id="skip-fwd-10-btn" title="Skip Forward 10s">+10s</button>
+            <button id="skip-fwd-30-btn" title="Skip Forward 30s">+30s</button>
 
-              <span class="divider">|</span>
+            <span class="divider">|</span>
 
-              <button id="in-point-btn" title="Set In Point (I)">I</button>
-              <button id="out-point-btn" title="Set Out Point (O)">O</button>
-              <button id="loop-toggle-btn" title="Toggle Loop Playback">Loop ⮎</button>
+            <button id="in-point-btn" title="Set In Point (I)">I</button>
+            <button id="out-point-btn" title="Set Out Point (O)">O</button>
+            <button id="loop-toggle-btn" title="Toggle Loop Playback">Loop ⮎</button>
 
-              <span class="divider">|</span>
+            <span class="divider">|</span>
 
-               <button id="send-to-macro-btn" title="Send In/Out Selection to Macro Buffer">=&gt; Macro</button>
-          </nav>
+             <button id="send-to-macro-btn" title="Send In/Out Selection to Macro Buffer">=&gt; Macro</button>
+
+            <span class="divider">|</span>
+            <button id="rotate-left-btn" title="Rotate Left 90°">↶ 90L</button>
+            <button id="rotate-right-btn" title="Rotate Right 90°">↷ 90R</button>
+            </nav>
             <div class="header-right">
                 <button id="toggle-sidebar-btn" title="Toggle Info Sidebar">Info</button>
             </div>
@@ -60,9 +64,8 @@
 
           <div class="video-area">
               <p>Video Player Area</p>
-               <video id="video-player" controls>
-                  Your browser does not support the video tag.
-               </video>
+              <video id="video-player"> Your browser does not support the video tag.
+            </video>
           </div>
       </main>
 
