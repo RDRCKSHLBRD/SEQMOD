@@ -1,0 +1,29 @@
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# Dependency directory
+node_modules/
+
+# Log files
+*.log
+npm-debug.log*
+
+# Runtime data
+*.pid
+*.seed
+*.pid.lock
+
+# Environment variables
+.env*
+!.env.example
+
+# Optional: IDE directory (Uncomment if needed)
+# .vscode/
+# .idea/
+
+# Optional: Build Output (Add later when relevant)
+# dist/
+# build/
+# out/
+# *.asar
